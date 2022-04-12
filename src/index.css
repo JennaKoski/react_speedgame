@@ -36,11 +36,11 @@ p {
   align-items: center;
   cursor: pointer;
   pointer-events: auto;
-  box-shadow: 0 0 2px grey;
+  box-shadow: 0 0 3px rgb(31, 31, 31);
 }
 
 .active {
-  /* filter: brightness(3); */
+  box-shadow: 0 0 8px rgb(31, 31, 31);
   background-image: url("https://image.posterlounge.fi/images/big/1868016.jpg");
   background-size: cover;
 }
