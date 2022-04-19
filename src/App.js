@@ -6,6 +6,13 @@ import { circles } from "./Circles";
 import Button from "./components/Button";
 import GameOver from "./components/GameOver";
 
+import startMusic from "./assets/sounds/01. STAR WARS- Jedi Academy Main Title.mp3";
+import stopMusic from "./assets/sounds/06. Yavin IV- Swamp Atr00.mp3";
+
+const startSound = new Audio(startMusic);
+const stopSound = new Audio(stopMusic);
+// click sound should be here also
+
 const getRndInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -22,7 +29,16 @@ class App extends Component {
 
   timer = undefined;
 
+  /* clickPlay = () => {
+    if (clickSound.paused) {
+      clickSound.play()
+    } else {
+      clickSound.currentTime = 0;
+    }
+  } */
+
   clickHandler = (i) => {
+    // this.clickPlay();
     if (this.state.current !== i) {
       this.stopHandler();
       return;
@@ -57,23 +73,21 @@ class App extends Component {
   };
 
   startHandler = () => {
+    startSound.play();
+    startSound.loop = true;
     this.nextCircle();
     this.setState({ gameOn: true });
   };
 
   stopHandler = () => {
+    startSound.pause();
+    stopSound.play();
     clearTimeout(this.timer);
     this.setState({ showGameOver: true, gameOn: false });
   };
 
   closeHandler = () => {
-    // You can use either one of these:
     window.location.reload();
-    // this.setState({
-    //   showGameOver: false,
-    //   score: 0,
-    //   current: -1,
-    // });
   };
 
   render() {
@@ -93,11 +107,17 @@ class App extends Component {
           ))}
         </div>
         <div>
-          <Button click={this.startHandler}>START</Button>
-          <Button click={this.stopHandler}>STOP</Button>
+          {!this.state.gameOn && (
+            <Button click={this.startHandler}>START</Button>
+          )}
+          {this.state.gameOn && <Button click={this.stopHandler}>STOP</Button>}
         </div>
         {this.state.showGameOver && (
-          <GameOver click={this.closeHandler} score={this.state.score} />
+          <GameOver
+            click={this.closeHandler}
+            score={this.state.score}
+            message={this.message}
+          />
         )}
       </div>
     );

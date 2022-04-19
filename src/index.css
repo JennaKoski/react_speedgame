@@ -45,22 +45,6 @@ p {
   background-size: cover;
 }
 
-#c1 {
-  background-color: rgb(45, 131, 243);
-}
-
-#c2 {
-  background-color: rgb(226, 74, 145);
-}
-
-#c3 {
-  background-color: rgb(236, 199, 32);
-}
-
-#c4 {
-  background-color: rgb(29, 236, 29);
-}
-
 button {
   font-family: inherit;
   font-size: 1rem;
@@ -72,7 +56,7 @@ button {
   cursor: pointer;
 }
 
-.popup {
+.gameover_box {
   background-color: white;
   padding: 2rem;
   width: 40%;
@@ -91,8 +75,4 @@ button {
   right: 0;
   background-color: transparent;
   padding: 0.1rem 0.3rem;
-}
-
-#stop {
-  display: flex;
 }
