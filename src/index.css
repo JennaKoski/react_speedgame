@@ -56,6 +56,18 @@ button {
   cursor: pointer;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .gameover_box {
   background-color: white;
   padding: 2rem;
