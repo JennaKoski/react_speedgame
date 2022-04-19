@@ -11,7 +11,6 @@ import stopMusic from "./assets/sounds/06. Yavin IV- Swamp Atr00.mp3";
 
 const startSound = new Audio(startMusic);
 const stopSound = new Audio(stopMusic);
-// click sound should be here also
 
 const getRndInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -29,16 +28,7 @@ class App extends Component {
 
   timer = undefined;
 
-  /* clickPlay = () => {
-    if (clickSound.paused) {
-      clickSound.play()
-    } else {
-      clickSound.currentTime = 0;
-    }
-  } */
-
   clickHandler = (i) => {
-    // this.clickPlay();
     if (this.state.current !== i) {
       this.stopHandler();
       return;
@@ -67,7 +57,6 @@ class App extends Component {
       pace: this.state.pace * 0.95,
       rounds: this.state.rounds + 1,
     });
-    console.log("rounds", this.state.rounds);
 
     this.timer = setTimeout(this.nextCircle, this.state.pace);
   };
